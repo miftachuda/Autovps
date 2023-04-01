@@ -1,7 +1,7 @@
 #!/bin/bash
 # Debian 9 & 10 64bit
 # Ubuntu 18.04 & 20.04 bit
-# Centos 7 & 8 64bit 
+# Centos 7 & 8 64bit
 # Mod By SL
 # ==========================================
 # Color
@@ -19,31 +19,31 @@ MYIP=$(wget -qO- ipinfo.io/ip);
 echo "Checking VPS"
 IZIN=$( curl ipinfo.io/ip | grep $MYIP )
 if [ $MYIP = $MYIP ]; then
-echo -e "${NC}${GREEN}Permission Accepted...${NC}"
+    echo -e "${NC}${GREEN}Permission Accepted...${NC}"
 else
-echo -e "${NC}${RED}Permission Denied!${NC}";
-echo -e "${NC}${LIGHT}Fuck You!!"
-exit 0
+    echo -e "${NC}${RED}Permission Denied!${NC}";
+    echo -e "${NC}${LIGHT}Fuck You!!"
+    exit 0
 fi
 # ==================================================
 # Link Hosting Kalian
-fisabiliyusri="raw.githubusercontent.com/fisabiliyusri/Mantap/main/wireguard"
+fisabiliyusri="raw.githubusercontent.com/miftachuda/Autovps/master/wireguard"
 
 # Check OS version
 if [[ -e /etc/debian_version ]]; then
-	source /etc/os-release
-	OS=$ID # debian or ubuntu
-elif [[ -e /etc/centos-release ]]; then
-	source /etc/os-release
-	OS=centos
+    source /etc/os-release
+    OS=$ID # debian or ubuntu
+    elif [[ -e /etc/centos-release ]]; then
+    source /etc/os-release
+    OS=centos
 fi
 
 Green_font_prefix="\033[32m" && Red_font_prefix="\033[31m" && Green_background_prefix="\033[42;37m" && Red_background_prefix="\033[41;37m" && Font_color_suffix="\033[0m"
 Info="${Green_font_prefix}[information]${Font_color_suffix}"
 
 if [[ -e /etc/wireguard/params ]]; then
-	echo -e "${Info} WireGuard sudah diinstal, silahkan ketik addwg untuk menambah client."
-	exit 1
+    echo -e "${Info} WireGuard sudah diinstal, silahkan ketik addwg untuk menambah client."
+    exit 1
 fi
 
 echo -e "${Info} Wireguard Script Mod By SL"
@@ -53,19 +53,19 @@ echo -e "${Info} Wireguard Script Mod By SL"
 SERVER_PUB_NIC=$(ip -o $ANU -4 route show to default | awk '{print $5}');
 
 # Install WireGuard tools and module
-	if [[ $OS == 'ubuntu' ]]; then
-	apt install -y wireguard
-elif [[ $OS == 'debian' ]]; then
-	echo "deb http://deb.debian.org/debian/ unstable main" >/etc/apt/sources.list.d/unstable.list
-	printf 'Package: *\nPin: release a=unstable\nPin-Priority: 90\n' >/etc/apt/preferences.d/limit-unstable
-	apt update
-	apt install -y wireguard-tools iptables iptables-persistent
-	apt install -y linux-headers-$(uname -r)
-elif [[ ${OS} == 'centos' ]]; then
-	curl -Lo /etc/yum.repos.d/wireguard.repo https://copr.fedorainfracloud.org/coprs/jdoss/wireguard/repo/epel-7/jdoss-wireguard-epel-7.repo
-	yum -y update
-	yum -y install wireguard-dkms wireguard-tools
-	fi
+if [[ $OS == 'ubuntu' ]]; then
+    apt install -y wireguard
+    elif [[ $OS == 'debian' ]]; then
+    echo "deb http://deb.debian.org/debian/ unstable main" >/etc/apt/sources.list.d/unstable.list
+    printf 'Package: *\nPin: release a=unstable\nPin-Priority: 90\n' >/etc/apt/preferences.d/limit-unstable
+    apt update
+    apt install -y wireguard-tools iptables iptables-persistent
+    apt install -y linux-headers-$(uname -r)
+    elif [[ ${OS} == 'centos' ]]; then
+    curl -Lo /etc/yum.repos.d/wireguard.repo https://copr.fedorainfracloud.org/coprs/jdoss/wireguard/repo/epel-7/jdoss-wireguard-epel-7.repo
+    yum -y update
+    yum -y install wireguard-dkms wireguard-tools
+fi
 apt install iptables iptables-persistent -y
 # Make sure the directory exists (this does not seem the be the case on fedora)
 mkdir /etc/wireguard >/dev/null 2>&1
@@ -112,9 +112,9 @@ WG_RUNNING=$?
 
 # Tambahan
 cd /usr/bin
-wget -O addwg "https://raw.githubusercontent.com/fisabiliyusri/Mantap/main/wireguard/addwg.sh"
-wget -O delwg "https://raw.githubusercontent.com/fisabiliyusri/Mantap/main/wireguard/delwg.sh"
-wget -O renewwg "https://raw.githubusercontent.com/fisabiliyusri/Mantap/main/wireguard/renewwg.sh"
+wget -O addwg "https://raw.githubusercontent.com/miftachuda/Autovps/master/wireguard/addwg.sh"
+wget -O delwg "https://raw.githubusercontent.com/miftachuda/Autovps/master/wireguard/delwg.sh"
+wget -O renewwg "https://raw.githubusercontent.com/miftachuda/Autovps/master/wireguard/renewwg.sh"
 chmod +x addwg
 chmod +x delwg
 chmod +x renewwg

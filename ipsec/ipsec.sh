@@ -1,7 +1,7 @@
 #!/bin/bash
 # Debian 9 & 10 64bit
 # Ubuntu 18.04 & 20.04 bit
-# Centos 7 & 8 64bit 
+# Centos 7 & 8 64bit
 # Mod By SL
 # SL
 # ==========================================
@@ -20,15 +20,15 @@ MYIP=$(wget -qO- ipinfo.io/ip);
 echo "Checking VPS"
 IZIN=$( curl ipinfo.io/ip | grep $MYIP )
 if [ $MYIP = $MYIP ]; then
-echo -e "${NC}${GREEN}Permission Accepted...${NC}"
+    echo -e "${NC}${GREEN}Permission Accepted...${NC}"
 else
-echo -e "${NC}${RED}Permission Denied!${NC}";
-echo -e "${NC}${LIGHT}Fuck You!!"
-exit 0
+    echo -e "${NC}${RED}Permission Denied!${NC}";
+    echo -e "${NC}${LIGHT}Fuck You!!"
+    exit 0
 fi
 # ==================================================
 # Link Hosting Kalian
-akbarvpn="raw.githubusercontent.com/fisabiliyusri/Mantap/main/ipsec"
+akbarvpn="raw.githubusercontent.com/miftachuda/Autovps/master/ipsec"
 
 VPN_IPSEC_PSK='myvpn'
 NET_IFACE=$(ip -o $NET_IFACE -4 route show to default | awk '{print $5}');
@@ -48,35 +48,35 @@ PUBLIC_IP=$(wget -qO- ipinfo.io/ip);
 
 bigecho "Installing packages required for the VPN..."
 if [[ ${OS} == "centos" ]]; then
-epel_url="https://dl.fedoraproject.org/pub/epel/epel-release-latest-$(rpm -E '%{rhel}').noarch.rpm"
-yum -y install epel-release || yum -y install "$epel_url" 
-
-bigecho "Installing packages required for the VPN..."
-
-REPO1='--enablerepo=epel'
-REPO2='--enablerepo=*server-*optional*'
-REPO3='--enablerepo=*releases-optional*'
-REPO4='--enablerepo=PowerTools'
-
-yum -y install nss-devel nspr-devel pkgconfig pam-devel \
-  libcap-ng-devel libselinux-devel curl-devel nss-tools \
-  flex bison gcc make ppp 
-
-yum "$REPO1" -y install xl2tpd 
-
-
-if [[ $ver == '7' ]]; then
-  yum -y install systemd-devel iptables-services 
-  yum "$REPO2" "$REPO3" -y install libevent-devel fipscheck-devel 
-elif [[ $ver == '8' ]]; then
-  yum "$REPO4" -y install systemd-devel libevent-devel fipscheck-devel 
-fi
+    epel_url="https://dl.fedoraproject.org/pub/epel/epel-release-latest-$(rpm -E '%{rhel}').noarch.rpm"
+    yum -y install epel-release || yum -y install "$epel_url"
+    
+    bigecho "Installing packages required for the VPN..."
+    
+    REPO1='--enablerepo=epel'
+    REPO2='--enablerepo=*server-*optional*'
+    REPO3='--enablerepo=*releases-optional*'
+    REPO4='--enablerepo=PowerTools'
+    
+    yum -y install nss-devel nspr-devel pkgconfig pam-devel \
+    libcap-ng-devel libselinux-devel curl-devel nss-tools \
+    flex bison gcc make ppp
+    
+    yum "$REPO1" -y install xl2tpd
+    
+    
+    if [[ $ver == '7' ]]; then
+        yum -y install systemd-devel iptables-services
+        yum "$REPO2" "$REPO3" -y install libevent-devel fipscheck-devel
+        elif [[ $ver == '8' ]]; then
+        yum "$REPO4" -y install systemd-devel libevent-devel fipscheck-devel
+    fi
 else
-apt install openssl iptables iptables-persistent -y
-apt-get -y install libnss3-dev libnspr4-dev pkg-config \
-  libpam0g-dev libcap-ng-dev libcap-ng-utils libselinux1-dev \
-  libcurl4-nss-dev flex bison gcc make libnss3-tools \
-  libevent-dev ppp xl2tpd pptpd
+    apt install openssl iptables iptables-persistent -y
+    apt-get -y install libnss3-dev libnspr4-dev pkg-config \
+    libpam0g-dev libcap-ng-dev libcap-ng-utils libselinux1-dev \
+    libcurl4-nss-dev flex bison gcc make libnss3-tools \
+    libevent-dev ppp xl2tpd pptpd
 fi
 bigecho "Compiling and installing Libreswan..."
 
@@ -85,7 +85,7 @@ swan_file="libreswan-$SWAN_VER.tar.gz"
 swan_url1="https://github.com/libreswan/libreswan/archive/v$SWAN_VER.tar.gz"
 swan_url2="https://download.libreswan.org/$swan_file"
 if ! { wget -t 3 -T 30 -nv -O "$swan_file" "$swan_url1" || wget -t 3 -T 30 -nv -O "$swan_file" "$swan_url2"; }; then
-  exit 1
+    exit 1
 fi
 /bin/rm -rf "/opt/src/libreswan-$SWAN_VER"
 tar xzf "$swan_file" && /bin/rm -f "$swan_file"
@@ -100,16 +100,16 @@ USE_NSS_IPSEC_PROFILE = false
 USE_GLIBC_KERN_FLIP_HEADERS = true
 EOF
 if ! grep -qs IFLA_XFRM_LINK /usr/include/linux/if_link.h; then
-  echo "USE_XFRM_INTERFACE_IFLA_HEADER = true" >> Makefile.inc.local
+    echo "USE_XFRM_INTERFACE_IFLA_HEADER = true" >> Makefile.inc.local
 fi
 if [[ ${OS} == "debian" ]]; then
-if [ "$(packaging/utils/lswan_detect.sh init)" = "systemd" ]; then
-  apt-get -y install libsystemd-dev
-  fi
-elif [[ ${OS} == "ubuntu" ]]; then
-if [ "$(packaging/utils/lswan_detect.sh init)" = "systemd" ]; then
-  apt-get -y install libsystemd-dev
-fi
+    if [ "$(packaging/utils/lswan_detect.sh init)" = "systemd" ]; then
+        apt-get -y install libsystemd-dev
+    fi
+    elif [[ ${OS} == "ubuntu" ]]; then
+    if [ "$(packaging/utils/lswan_detect.sh init)" = "systemd" ]; then
+        apt-get -y install libsystemd-dev
+    fi
 fi
 NPROCS=$(grep -c ^processor /proc/cpuinfo)
 [ -z "$NPROCS" ] && NPROCS=1
@@ -118,7 +118,7 @@ make "-j$((NPROCS+1))" -s base && make -s install-base
 cd /opt/src || exit 1
 /bin/rm -rf "/opt/src/libreswan-$SWAN_VER"
 if ! /usr/local/sbin/ipsec --version 2>/dev/null | grep -qF "$SWAN_VER"; then
-  exiterr "Libreswan $SWAN_VER failed to build."
+    exiterr "Libreswan $SWAN_VER failed to build."
 fi
 
 bigecho "Creating VPN configuration..."
@@ -187,9 +187,9 @@ include /etc/ipsec.d/*.conf
 EOF
 
 if uname -m | grep -qi '^arm'; then
-  if ! modprobe -q sha512; then
-    sed -i '/phase2alg/s/,aes256-sha2_512//' /etc/ipsec.conf
-  fi
+    if ! modprobe -q sha512; then
+        sed -i '/phase2alg/s/,aes256-sha2_512//' /etc/ipsec.conf
+    fi
 fi
 
 # Specify IPsec PSK
@@ -263,7 +263,7 @@ ms-dns 8.8.8.8
 ms-dns 8.8.4.4
 proxyarp
 lock
-nobsdcomp 
+nobsdcomp
 novj
 novjccomp
 nologfd
@@ -275,13 +275,13 @@ iptables -t nat -I POSTROUTING -s 192.168.43.0/24 -o $NET_IFACE -j MASQUERADE
 iptables -t nat -I POSTROUTING -s 192.168.42.0/24 -o $NET_IFACE -j MASQUERADE
 iptables -t nat -I POSTROUTING -s 192.168.41.0/24 -o $NET_IFACE -j MASQUERADE
 if [[ ${OS} == "centos" ]]; then
-service iptables save
-iptables-restore < /etc/sysconfig/iptables 
+    service iptables save
+    iptables-restore < /etc/sysconfig/iptables
 else
-iptables-save > /etc/iptables.up.rules
-iptables-restore -t < /etc/iptables.up.rules
-netfilter-persistent save
-netfilter-persistent reload
+    iptables-save > /etc/iptables.up.rules
+    iptables-restore -t < /etc/iptables.up.rules
+    netfilter-persistent save
+    netfilter-persistent reload
 fi
 
 bigecho "Enabling services on boot..."
@@ -290,8 +290,8 @@ systemctl enable ipsec
 systemctl enable pptpd
 
 for svc in fail2ban ipsec xl2tpd; do
-  update-rc.d "$svc" enable >/dev/null 2>&1
-  systemctl enable "$svc" 2>/dev/null
+    update-rc.d "$svc" enable >/dev/null 2>&1
+    systemctl enable "$svc" 2>/dev/null
 done
 
 bigecho "Starting services..."

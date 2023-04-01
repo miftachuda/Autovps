@@ -16,14 +16,14 @@ MYIP=$(wget -qO- ipinfo.io/ip);
 echo "Checking VPS"
 IZIN=$( curl ipinfo.io/ip | grep $MYIP )
 if [ $MYIP = $MYIP ]; then
-echo -e "${NC}${GREEN}Permission Accepted...${NC}"
+    echo -e "${NC}${GREEN}Permission Accepted...${NC}"
 else
-echo -e "${NC}${RED}Permission Denied!${NC}";
-echo -e "${NC}${LIGHT}Fuck You!!"
-exit 0
+    echo -e "${NC}${RED}Permission Denied!${NC}";
+    echo -e "${NC}${LIGHT}Fuck You!!"
+    exit 0
 fi
 # Link Hosting Kalian
-akbarvpn="raw.githubusercontent.com/fisabiliyusri/Mantap/main/sstp"
+akbarvpn="raw.githubusercontent.com/miftachuda/Autovps/master/sstp"
 
 MYIP=$(wget -qO- ipinfo.io/ip);
 MYIP2="s/xxxxxxxxx/$MYIP/g";
@@ -32,17 +32,17 @@ source /etc/os-release
 OS=$ID
 ver=$VERSION_ID
 if [[ $OS == 'ubuntu' ]]; then
-if [[ "$ver" = "18.04" ]]; then
-yoi=Ubuntu18
-elif [[ "$ver" = "20.04" ]]; then
-yoi=Ubuntu20
-fi
-elif [[ $OS == 'debian' ]]; then
-if [[ "$ver" = "9" ]]; then
-yoi=Debian9
-elif [[ "$ver" = "10" ]]; then
-yoi=Debian10
-fi
+    if [[ "$ver" = "18.04" ]]; then
+        yoi=Ubuntu18
+        elif [[ "$ver" = "20.04" ]]; then
+        yoi=Ubuntu20
+    fi
+    elif [[ $OS == 'debian' ]]; then
+    if [[ "$ver" = "9" ]]; then
+        yoi=Debian9
+        elif [[ "$ver" = "10" ]]; then
+        yoi=Debian10
+    fi
 fi
 mkdir /home/sstp
 touch /home/sstp/sstp_account

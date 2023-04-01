@@ -6,7 +6,7 @@ MYIP=$(wget -qO- ipinfo.io/ip);
 clear
 domain=$(cat /etc/xray/domain)
 apt install iptables iptables-persistent -y
-apt install curl socat xz-utils wget apt-transport-https gnupg gnupg2 gnupg1 dnsutils lsb-release -y 
+apt install curl socat xz-utils wget apt-transport-https gnupg gnupg2 gnupg1 dnsutils lsb-release -y
 apt install socat cron bash-completion ntpdate -y
 ntpdate pool.ntp.org
 apt -y install chrony
@@ -24,7 +24,7 @@ latest_version="$(curl -s https://api.github.com/repos/XTLS/Xray-core/releases |
 # / / Installation Xray Core
 xraycore_link="https://github.com/XTLS/Xray-core/releases/download/v$latest_version/xray-linux-64.zip"
 
-# 
+#
 uuid=$(cat /proc/sys/kernel/random/uuid)
 
 # / / Make Main Directory
@@ -41,8 +41,8 @@ chmod +x /usr/local/bin/xray
 # Make Folder XRay
 mkdir -p /var/log/xray/
 #
-wget -q -O /usr/local/bin/geosite.dat "https://raw.githubusercontent.com/fisabiliyusri/Mantap/main/grpc/geosite.dat"
-wget -q -O /usr/local/bin/geoip.dat "https://raw.githubusercontent.com/fisabiliyusri/Mantap/main/grpc/geoip.dat"
+wget -q -O /usr/local/bin/geosite.dat "https://raw.githubusercontent.com/miftachuda/Autovps/master/grpc/geosite.dat"
+wget -q -O /usr/local/bin/geoip.dat "https://raw.githubusercontent.com/miftachuda/Autovps/master/grpc/geoip.dat"
 
 #
 cat > /etc/xray/vmessgrpc.json << END
@@ -319,10 +319,10 @@ systemctl enable vless-grpc
 systemctl restart vless-grpc
 #
 cd /usr/bin
-wget -O addgrpc "https://raw.githubusercontent.com/fisabiliyusri/Mantap/main/grpc/addgrpc.sh"
-wget -O delgrpc "https://raw.githubusercontent.com/fisabiliyusri/Mantap/main/grpc/delgrpc.sh"
-wget -O renewgrpc "https://raw.githubusercontent.com/fisabiliyusri/Mantap/main/grpc/renewgrpc.sh"
-wget -O cekgrpc "https://raw.githubusercontent.com/fisabiliyusri/Mantap/main/grpc/cekgrpc.sh"
+wget -O addgrpc "https://raw.githubusercontent.com/miftachuda/Autovps/master/grpc/addgrpc.sh"
+wget -O delgrpc "https://raw.githubusercontent.com/miftachuda/Autovps/master/grpc/delgrpc.sh"
+wget -O renewgrpc "https://raw.githubusercontent.com/miftachuda/Autovps/master/grpc/renewgrpc.sh"
+wget -O cekgrpc "https://raw.githubusercontent.com/miftachuda/Autovps/master/grpc/cekgrpc.sh"
 
 chmod +x addgrpc
 chmod +x delgrpc

@@ -1,18 +1,18 @@
 #!/bin/bash
 clear
 slowdns () {
-echo -e "\033[1;31m════════════════════════════════════════════════════\033[0m"
-tput setaf 7 ; tput setab 4 ; tput bold ; printf '%40s%s%-12s\n' "MENU SLOWDNS MANAGER" ; tput sgr0
-echo -e "\033[1;31m════════════════════════════════════════════════════\033[0m"
-echo -e "\033[0;36m#===================================================#\033[m"
-echo -e "\033[0;36m# .|'''.|'||                '||''|. '|.   '|'.|'''.|#\033[m"
-echo -e "\033[0;36m# ||..  ' ||  ... ... ... ...||   || |'|   | ||..  '#\033[m"
-echo -e "\033[0;36m#  ''|||. ||.|  '|.||  ||  | ||    ||| '|. |  ''|||.#\033[m"
-echo -e "\033[0;36m#.     '||||||   || ||| |||  ||    |||   |||.     '|#\033[m"
-echo -e "\033[0;36m#|'....|'.||.'|..|'  |   |  .||...|'.|.   '||'....|'#\033[m"
-echo -e "\033[0;36m#---------------------------------------------------#\033[m"
-echo -e "\033[0;36m#\033[m \033[0;31mSlowDNS | SANTAI\033[m \033[0;36m#\033[m"
-echo -e "\033[0;36m#===================================================#\033[m"
+    echo -e "\033[1;31m════════════════════════════════════════════════════\033[0m"
+    tput setaf 7 ; tput setab 4 ; tput bold ; printf '%40s%s%-12s\n' "MENU SLOWDNS MANAGER" ; tput sgr0
+    echo -e "\033[1;31m════════════════════════════════════════════════════\033[0m"
+    echo -e "\033[0;36m#===================================================#\033[m"
+    echo -e "\033[0;36m# .|'''.|'||                '||''|. '|.   '|'.|'''.|#\033[m"
+    echo -e "\033[0;36m# ||..  ' ||  ... ... ... ...||   || |'|   | ||..  '#\033[m"
+    echo -e "\033[0;36m#  ''|||. ||.|  '|.||  ||  | ||    ||| '|. |  ''|||.#\033[m"
+    echo -e "\033[0;36m#.     '||||||   || ||| |||  ||    |||   |||.     '|#\033[m"
+    echo -e "\033[0;36m#|'....|'.||.'|..|'  |   |  .||...|'.|.   '||'....|'#\033[m"
+    echo -e "\033[0;36m#---------------------------------------------------#\033[m"
+    echo -e "\033[0;36m#\033[m \033[0;31mSlowDNS | SANTAI\033[m \033[0;36m#\033[m"
+    echo -e "\033[0;36m#===================================================#\033[m"
     echo ""
     echo -e "\033[0;36m[01]\033[m | Install SlowDNS SSH"
     echo -e "\033[0;36m[02]\033[m | Install SlowDNS SSL"
@@ -29,21 +29,21 @@ echo -e "\033[0;36m#===================================================#\033[m"
     echo ""
     echo -ne "\033[0;36mO apa yang ingin kamu lakukan?:\0033[m " && read opcao
     case $opcao in
-    1) Opcao1 ;;
-    2) Opcao2 ;;
-    3) Opcao3 ;;
-    4) Opcao4 ;;
-    5) Opcao5 ;;
-    6) Opcao6 ;;
-    7) Opcao7 ;;
-    8) Opcao8 ;;
-    9) Opcao9 ;;
-    10) Opcao10 ;;
-    11) Opcao11 ;;
-    0) Sair ;;
-    *) "Calma Barboleta" ; echo ; slowdns ;;
+        1) Opcao1 ;;
+        2) Opcao2 ;;
+        3) Opcao3 ;;
+        4) Opcao4 ;;
+        5) Opcao5 ;;
+        6) Opcao6 ;;
+        7) Opcao7 ;;
+        8) Opcao8 ;;
+        9) Opcao9 ;;
+        10) Opcao10 ;;
+        11) Opcao11 ;;
+        0) Sair ;;
+        *) "Calma Barboleta" ; echo ; slowdns ;;
     esac
-    }
+}
 
 Opcao1 () {
     clear
@@ -87,20 +87,20 @@ Opcao8 () {
 }
 
 Opcao9 () {
-     clear
+    clear
     bash /etc/slowdns/stopdns
     bash /etc/slowdns/remove-slow
 }
 
 Opcao10 () {
     clear
-    wget https://raw.githubusercontent.com/fisabiliyusri/Mantap/main/Slowdns/update
+    wget https://raw.githubusercontent.com/miftachuda/Autovps/master/Slowdns/update
     chmod +x update
     bash update
 }
 
 Opcao11 () {
-     clear
+    clear
     bash /etc/slowdns/remove-slow
     echo -e "\033[0;31mPengelola SlowDNS Dicopot!\033[0m"
     sleep 2

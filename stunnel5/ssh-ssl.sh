@@ -14,16 +14,16 @@ LIGHT='\033[0;37m'
 MYIP=$(wget -qO- ipinfo.io/ip);
 # ==================================================
 # Link Hosting Kalian
-akbarvpn=""raw.githubusercontent.com/fisabiliyusri/Mantap/main/ssh
+akbarvpn=""raw.githubusercontent.com/miftachuda/Autovps/master/ssh
 
 # Link Hosting Kalian Untuk Xray
-akbarvpnn="raw.githubusercontent.com/fisabiliyusri/Mantap/main/xray"
+akbarvpnn="raw.githubusercontent.com/miftachuda/Autovps/master/xray"
 
 # Link Hosting Kalian Untuk Trojan Go
-akbarvpnnn="raw.githubusercontent.com/fisabiliyusri/Mantap/main/trojango"
+akbarvpnnn="raw.githubusercontent.com/miftachuda/Autovps/master/trojango"
 
 # Link Hosting Kalian Untuk Stunnel5
-akbarvpnnnn="raw.githubusercontent.com/fisabiliyusri/Mantap/main/stunnel5"
+akbarvpnnnn="raw.githubusercontent.com/miftachuda/Autovps/master/stunnel5"
 
 # initializing var
 export DEBIAN_FRONTEND=noninteractive
@@ -81,7 +81,7 @@ systemctl restart sslh
 
 
 # ssl
-# install stunnel 5 
+# install stunnel 5
 cd /root/
 wget -q -O stunnel5.zip "https://${akbarvpnnnn}/stunnel5.zip"
 unzip -o stunnel5.zip

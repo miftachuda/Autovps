@@ -16,14 +16,14 @@ MYIP=$(wget -qO- ipinfo.io/ip);
 echo "Checking VPS"
 IZIN=$( curl ipinfo.io/ip | grep $MYIP )
 if [ $MYIP = $MYIP ]; then
-echo -e "${NC}${GREEN}Permission Accepted...${NC}"
+    echo -e "${NC}${GREEN}Permission Accepted...${NC}"
 else
-echo -e "${NC}${RED}Permission Denied!${NC}";
-echo -e "${NC}${LIGHT}Fuck You!!"
-exit 0
+    echo -e "${NC}${RED}Permission Denied!${NC}";
+    echo -e "${NC}${LIGHT}Fuck You!!"
+    exit 0
 fi
 # Link Hosting Kalian
-akbarvpn="raw.githubusercontent.com/fisabiliyusri/Mantap/main/shadowsocks"
+akbarvpn="raw.githubusercontent.com/miftachuda/Autovps/master/shadowsocks"
 
 source /etc/os-release
 OS=$ID
@@ -42,20 +42,20 @@ echo "#############################################"
 echo "Install Shadowsocks-libev..."
 apt-get install software-properties-common -y
 if [[ $OS == 'ubuntu' ]]; then
-apt install shadowsocks-libev -y
-apt install simple-obfs -y
-elif [[ $OS == 'debian' ]]; then
-if [[ "$ver" = "9" ]]; then
-echo "deb http://deb.debian.org/debian stretch-backports main" | tee /etc/apt/sources.list.d/stretch-backports.list
-apt update
-apt -t stretch-backports install shadowsocks-libev -y
-apt -t stretch-backports install simple-obfs -y
-elif [[ "$ver" = "10" ]]; then
-echo "deb http://deb.debian.org/debian buster-backports main" | tee /etc/apt/sources.list.d/buster-backports.list
-apt update
-apt -t buster-backports install shadowsocks-libev -y
-apt -t buster-backports install simple-obfs -y
-fi
+    apt install shadowsocks-libev -y
+    apt install simple-obfs -y
+    elif [[ $OS == 'debian' ]]; then
+    if [[ "$ver" = "9" ]]; then
+        echo "deb http://deb.debian.org/debian stretch-backports main" | tee /etc/apt/sources.list.d/stretch-backports.list
+        apt update
+        apt -t stretch-backports install shadowsocks-libev -y
+        apt -t stretch-backports install simple-obfs -y
+        elif [[ "$ver" = "10" ]]; then
+        echo "deb http://deb.debian.org/debian buster-backports main" | tee /etc/apt/sources.list.d/buster-backports.list
+        apt update
+        apt -t buster-backports install shadowsocks-libev -y
+        apt -t buster-backports install simple-obfs -y
+    fi
 fi
 echo "Install Shadowsocks-libev Selesai."
 echo "#############################################"
@@ -64,7 +64,7 @@ echo "#############################################"
 echo "#############################################"
 echo "Konfigurasi Server."
 cat > /etc/shadowsocks-libev/config.json <<END
-{   
+{
     "server":"0.0.0.0",
     "server_port":8488,
     "password":"tes",
