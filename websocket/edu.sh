@@ -34,29 +34,29 @@ systemctl daemon-reload
 systemctl enable ws-nontls
 systemctl restart ws-nontls
 
-# Getting Proxy Template
-wget -q -O /usr/local/bin/ws-ovpn https://${akbarvpn}/ws-ovpn.py
-chmod +x /usr/local/bin/ws-ovpn
+# # Getting Proxy Template
+# wget -q -O /usr/local/bin/ws-ovpn https://${akbarvpn}/ws-ovpn.py
+# chmod +x /usr/local/bin/ws-ovpn
 
-# Installing Service
-cat > /etc/systemd/system/ws-ovpn.service << END
-[Unit]
-Description=Python Proxy Mod By LamVpn
-Documentation=https://nekopoi.care
-After=network.target nss-lookup.target
+# # Installing Service
+# cat > /etc/systemd/system/ws-ovpn.service << END
+# [Unit]
+# Description=Python Proxy Mod By LamVpn
+# Documentation=https://nekopoi.care
+# After=network.target nss-lookup.target
 
-[Service]
-Type=simple
-User=root
-CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
-NoNewPrivileges=true
-ExecStart=/usr/bin/python -O /usr/local/bin/ws-ovpn 2086
-Restart=on-failure
+# [Service]
+# Type=simple
+# User=root
+# CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+# AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
+# NoNewPrivileges=true
+# ExecStart=/usr/bin/python -O /usr/local/bin/ws-ovpn 2086
+# Restart=on-failure
 
-[Install]
-WantedBy=multi-user.target
-END
+# [Install]
+# WantedBy=multi-user.target
+# END
 
 systemctl daemon-reload
 systemctl enable ws-ovpn
