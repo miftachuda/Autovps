@@ -47,7 +47,6 @@ wget https://${akbarvpnnnnnnnnn}/edu.sh && chmod +x edu.sh && ./edu.sh
 
 
 
-rm -f ./edu.sh
 
 
 wget -O /usr/bin/badvpn-udpgw "https://${akbarvpn}/badvpn-udpgw64"
@@ -58,6 +57,12 @@ sed -i '$ i\screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-c
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7100 --max-clients 500
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7200 --max-clients 500
 screen -dmS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 500
+
+wget https://${akbarvpnnnnnn}/ins-xray.sh && chmod +x ins-xray.sh && screen -S xray ./ins-xray.sh
+
+
+rm -f ./edu.sh
+rm -f ./ins-xray.sh
 
 cat <<EOF> /etc/systemd/system/autosett.service
 [Unit]
