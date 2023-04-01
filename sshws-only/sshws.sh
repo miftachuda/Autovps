@@ -9,9 +9,6 @@ if [ "$(systemd-detect-virt)" == "openvz" ]; then
 fi
 #setup env tools
 #update
-apt update -y
-apt upgrade -y
-apt dist-upgrade -y
 apt-get remove --purge ufw firewalld -y
 apt-get remove --purge exim4 -y
 
@@ -54,7 +51,10 @@ echo "IP=" >> /var/lib/crot/ipvps.conf
 
 
 wget https://${akbarvpnnnnnnnnn}/edu.sh && chmod +x edu.sh && ./edu.sh
-rm -f /root/edu.sh
+
+
+
+rm -f ./edu.sh
 
 
 wget -O /usr/bin/badvpn-udpgw "https://${akbarvpn}/badvpn-udpgw64"
